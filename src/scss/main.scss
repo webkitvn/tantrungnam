@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@theme {
+    --color-primary-50: #effef4;
+    --color-primary-100: #dafee6;
+    --color-primary-200: #b8facf;
+    --color-primary-300: #80f5aa;
+    --color-primary-400: #42e67e;
+    --color-primary-500: #19ce5c;
+    --color-primary-600: #0eab48;
+    --color-primary-700: #0f863b;
+    --color-primary-800: #126933;
+    --color-primary-900: #10542b;
+    --color-primary-950: #033016;
+}
+body {
+    --global-body-font-family: 'Be Vietnam Pro', sans-serif;
+    --global-md-spacing: 1rem;
+}
