@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 347.11 347.11">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-5 {
+        fill: #f7a25b;
+      }
+
+      .cls-6 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-2 {
+        stroke: #f7a25b;
+        stroke-dasharray: 0 0 0 2;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: .75px;
+      }
+    </style>
+    <clipPath id="clippath">
+      <path class="cls-1" d="M264.14,305.21c-72.7,50.02-172.2,31.63-222.23-41.08C-8.11,191.44,10.28,91.94,82.97,41.92,155.68-8.1,255.17,10.28,305.19,82.99c50.03,72.71,31.64,172.21-41.07,222.23m1.37,2c73.82-50.78,92.49-151.79,41.7-225.61C256.42,7.79,155.41-10.87,81.58,39.91,7.78,90.69-10.9,191.7,39.89,265.51c50.79,73.82,151.79,92.49,225.61,41.7"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="28.94" y1="197.35" x2="448.43" y2="136.41" gradientTransform="translate(-69.39 220.43) rotate(34.53) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f7a25b"/>
+      <stop offset=".34" stop-color="#f26622"/>
+      <stop offset=".63" stop-color="#f7a25b"/>
+      <stop offset=".93" stop-color="#f26622"/>
+      <stop offset="1" stop-color="#f7a25b"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="557.18" y1="-2843.35" x2="557.18" y2="-2843.35" gradientTransform="translate(-2946209.3 3439451.49) rotate(29.5) scale(1563.04)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f7a25b"/>
+      <stop offset=".34" stop-color="#f26622"/>
+      <stop offset=".63" stop-color="#f7a25b"/>
+      <stop offset=".93" stop-color="#f26622"/>
+      <stop offset="1" stop-color="#f7a25b"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <g id="Layer_2-2" data-name="Layer 2-2">
+      <g>
+        <path class="cls-5" d="M317.65,173.56c0,79.58-64.51,144.09-144.09,144.09S29.46,253.14,29.46,173.56,93.97,29.46,173.56,29.46s144.09,64.51,144.09,144.09h0Z"/>
+        <path class="cls-2" d="M346.74,173.56c0,95.64-77.54,173.18-173.18,173.18S.38,269.19,.38,173.56,77.92,.38,173.56,.38s173.18,77.53,173.18,173.18h0Z"/>
+        <g class="cls-4">
+          <rect class="cls-3" x="11.32" y="11.31" width="324.47" height="324.46" transform="translate(-67.79 128.95) rotate(-34.53)"/>
+        </g>
+        <path class="cls-6" d="M245.87,200.05c.16,0,.32,.06,.43,.18s.18,.27,.18,.43-.06,.32-.18,.43-.27,.18-.43,.18-.32-.06-.43-.18c-.11-.11-.18-.27-.18-.43s.06-.32,.18-.43c.11-.11,.27-.18,.43-.18Z"/>
+        <circle class="cls-5" cx="216.02" cy="5.61" r="3.24"/>
+        <circle class="cls-5" cx="297.62" cy="295.21" r="3.24"/>
+        <circle class="cls-5" cx="13.11" cy="181.56" r="5.04"/>
+      </g>
+    </g>
+  </g>
+</svg>

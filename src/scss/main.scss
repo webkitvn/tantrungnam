@@ -1,18 +1,63 @@
 @import "tailwindcss";
 @theme {
-    --color-primary-50: #effef4;
-    --color-primary-100: #dafee6;
-    --color-primary-200: #b8facf;
-    --color-primary-300: #80f5aa;
-    --color-primary-400: #42e67e;
-    --color-primary-500: #19ce5c;
-    --color-primary-600: #0eab48;
-    --color-primary-700: #0f863b;
-    --color-primary-800: #126933;
-    --color-primary-900: #10542b;
-    --color-primary-950: #033016;
+  --color-primary-50: #fff7ed;
+  --color-primary-100: #feedd6;
+  --color-primary-200: #fcd7ac;
+  --color-primary-300: #f9bb78;
+  --color-primary-400: #f7a25b; /* Main color */
+  --color-primary-500: #f3751c;
+  --color-primary-600: #e45b12;
+  --color-primary-700: #bd4411;
+  --color-primary-800: #963716;
+  --color-primary-900: #792e15;
+  --color-primary-950: #411509;
+  --page-padding: 140px;
+  --content-padding: 100px;
+  --font-family:
+    "Be Vietnam Pro", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 body {
-    --global-body-font-family: 'Be Vietnam Pro', sans-serif;
-    --global-md-spacing: 1rem;
+  --global-body-font-family: "Be Vietnam Pro", sans-serif;
+  --global-md-spacing: 1rem;
+  font-weight: 300;
+}
+@import "./_header.scss";
+@import "./_footer.scss";
+@import "./_page-nav.scss";
+
+.content-wrap{
+  @apply p-0 md:pl-[var(--page-padding)];
+}
+.image-text-title{
+  position: relative;
+  .image{
+    max-width: 80%;
+    margin: 0;
+  }
+  .text{
+    margin: 0;
+    @apply text-base lg:text-2xl font-semibold absolute top-[57%] left-[6%] z-100;
+  }
+}
+.download-btn{
+  height: 40px !important;
+  line-height: 40px !important;
+  border-radius: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: .25rem 1rem !important;
+  border: 1px solid var(--color-primary-400) !important;
+  color: var(--color-primary-400) !important;
+  text-decoration: none !important;
+  font-size: .9rem !important;
+  &:hover{
+    background-color: var(--color-primary-400) !important;
+    color: #fff !important;
+  }
+  svg{
+    @apply size-4;
+    margin-left: 5px;
+  }
 }
