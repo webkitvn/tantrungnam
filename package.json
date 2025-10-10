@@ -7,7 +7,8 @@
     "dev": "cross-env NODE_ENV=development concurrently \"npm run watch:css\" \"npm run watch:js\"",
     "watch:js": "node build.mjs --watch",
     "watch:css": "npx @tailwindcss/cli -i ./src/scss/main.scss -o ./assets/css/main.css --watch",
-    "build": "cross-env NODE_ENV=production concurrently \"npx @tailwindcss/cli -i ./src/scss/main.scss -o ./assets/css/main.css --minify\" \"node build.mjs\""
+    "build": "cross-env NODE_ENV=production concurrently \"npx @tailwindcss/cli -i ./src/scss/main.scss -o ./assets/css/main.css --minify\" \"node build.mjs\"",
+    "zip": "./create-theme-zip.sh"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.14",
