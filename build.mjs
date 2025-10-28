@@ -54,7 +54,7 @@ const buildOptions = {
     '.js': 'jsx'
   },
   resolveExtensions: ['.js', '.jsx'],
-  nodePaths: ['node_modules'],
+  nodePaths: ['node_modules', 'src/js'],
   metafile: true, // Enable build metadata for better debugging
   plugins: [{
     name: 'css-processor',
