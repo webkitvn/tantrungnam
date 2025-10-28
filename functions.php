@@ -28,6 +28,10 @@
         wp_enqueue_script( 'waypoint', 'https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js', array('jquery'), '4.0.1', true );
         /* Main script now uses vanilla JS but depends on Waypoints */
         wp_enqueue_script('main', get_stylesheet_directory_uri() . '/assets/js/main.js', array('waypoint'), THEME_VERSION, true);
+        /* Embla Carousel - ES module for carousel functionality */
+        wp_enqueue_script('carousel', get_stylesheet_directory_uri() . '/assets/js/carousel.js', array(), THEME_VERSION, true);
+        /* Add type="module" attribute to carousel script */
+        add_filter('script_loader_tag', 'cwp_add_module_type_to_carousel', 10, 3);
     }
     add_action('wp_enqueue_scripts', 'cwp_enqueue_scripts', 9999);
 
@@ -98,3 +102,11 @@
         return $output;
     }
     add_shortcode('download_btn', 'cwp_download_btn_shortcode');
+
+    /* Add type="module" attribute to carousel script for ES module support */
+    function cwp_add_module_type_to_carousel($tag, $handle, $src) {
+        if ('carousel' === $handle) {
+            $tag = '<script type="module" src="' . esc_url($src) . '" id="' . $handle . '-js"></script>';
+        }
+        return $tag;
+    }

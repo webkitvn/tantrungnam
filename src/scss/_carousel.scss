@@ -1,0 +1,344 @@
+/**
+ * Embla Carousel Styles
+ * 
+ * Base styles for Embla Carousel integration with WordPress theme
+ * Ensures proper display and responsive behavior
+ */
+
+/* Embla Carousel Base Styles */
+.embla {
+  overflow: hidden;
+  position: relative;
+  --gap: 1rem; /* Default gap for spacing */
+}
+
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y;
+  margin-left: calc(-1 * var(--gap));
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding-left: var(--gap);
+  position: relative;
+}
+
+/* Carousel Navigation Buttons */
+[data-carousel-prev],
+[data-carousel-next] {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 18px;
+  color: #374151;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: #d1d5db;
+    transform: translateY(-50%) scale(1.05);
+  }
+  
+  &:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+[data-carousel-prev] {
+  left: 1rem;
+}
+
+[data-carousel-next] {
+  right: 1rem;
+}
+
+/* Carousel Dots/Pagination */
+.embla__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.embla__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d1d5db;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background: #9ca3af;
+    transform: scale(1.2);
+  }
+  
+  &.is-selected {
+    background: #3b82f6;
+    transform: scale(1.3);
+  }
+}
+
+/* Carousel States */
+.embla.is-dragging {
+  cursor: grabbing;
+  
+  .embla__slide {
+    cursor: grabbing;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .embla {
+    --gap: 0.5rem; /* Smaller gap on mobile */
+  }
+  
+  .embla__container {
+    margin-left: calc(-1 * var(--gap));
+  }
+  
+  .embla__slide {
+    padding-left: var(--gap);
+  }
+  
+  [data-carousel-prev],
+  [data-carousel-next] {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+  
+  [data-carousel-prev] {
+    left: 0.5rem;
+  }
+  
+  [data-carousel-next] {
+    right: 0.5rem;
+  }
+}
+
+/* Accessibility Improvements */
+.embla__slide {
+  &:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+}
+
+/* Smooth Transitions */
+.embla__container {
+  transition: transform 0.3s ease;
+}
+
+/* Loading State */
+.embla.is-loading {
+  opacity: 0.7;
+  pointer-events: none;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e5e7eb;
+    border-top: 2px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* WordPress Block Integration */
+.block-carousel {
+  position: relative;
+  
+  /* Ensure proper spacing */
+  margin: 1rem 0;
+  
+  /* Hide original container when carousel is active */
+  .kt-row-column-wrap[style*="display: none"] {
+    display: none !important;
+  }
+}
+
+/* Ensure slides maintain their aspect ratio */
+.embla__slide .wp-block-kadence-column {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom carousel variants */
+.block-carousel[data-carousel-variant="fade"] {
+  .embla__container {
+    display: block;
+  }
+  
+  .embla__slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    
+    &.is-selected {
+      opacity: 1;
+    }
+  }
+}
+
+.block-carousel[data-carousel-variant="cards"] {
+  --gap: 0.5rem; /* Smaller gap for cards variant */
+  
+  .embla__slide {
+    padding-left: var(--gap);
+    padding-right: var(--gap);
+  }
+  
+  .embla__container {
+    margin-left: calc(-1 * var(--gap));
+    margin-right: calc(-1 * var(--gap));
+  }
+}
+
+/* Responsive Items Per Slide Configuration */
+.block-carousel {
+  /* Default: 1 item per slide */
+  --carousel-items-desktop: 1;
+  --carousel-items-mobile: 1;
+  
+  /* Gap customization options */
+  &[data-gap="none"] {
+    --gap: 0;
+  }
+  
+  &[data-gap="sm"] {
+    --gap: 0.5rem;
+  }
+  
+  &[data-gap="lg"] {
+    --gap: 1.5rem;
+  }
+  
+  &[data-gap="xl"] {
+    --gap: 2rem;
+  }
+  
+  /* Desktop configurations */
+  &[data-items-desktop="2"] .embla__slide {
+    flex: 0 0 calc(50% - var(--gap));
+    min-width: calc(50% - var(--gap));
+  }
+  
+  &[data-items-desktop="3"] .embla__slide {
+    flex: 0 0 calc(33.333% - var(--gap));
+    min-width: calc(33.333% - var(--gap));
+  }
+  
+  &[data-items-desktop="4"] .embla__slide {
+    flex: 0 0 calc(25% - var(--gap));
+    min-width: calc(25% - var(--gap));
+  }
+  
+  /* Mobile configurations */
+  @media (max-width: 768px) {
+    &[data-items-mobile="2"] .embla__slide {
+      flex: 0 0 calc(50% - var(--gap));
+      min-width: calc(50% - var(--gap));
+    }
+    
+    &[data-items-mobile="3"] .embla__slide {
+      flex: 0 0 calc(33.333% - var(--gap));
+      min-width: calc(33.333% - var(--gap));
+    }
+    
+    &[data-items-mobile="4"] .embla__slide {
+      flex: 0 0 calc(25% - var(--gap));
+      min-width: calc(25% - var(--gap));
+    }
+  }
+}
+
+/* CSS Class-based Items Per Slide (for manual control) */
+.carousel-2-items .embla__slide {
+  flex: 0 0 calc(50% - var(--gap));
+  min-width: calc(50% - var(--gap));
+}
+
+.carousel-3-items .embla__slide {
+  flex: 0 0 calc(33.333% - var(--gap));
+  min-width: calc(33.333% - var(--gap));
+}
+
+.carousel-4-items .embla__slide {
+  flex: 0 0 calc(25% - var(--gap));
+  min-width: calc(25% - var(--gap));
+}
+
+/* Mobile-specific items per slide */
+@media (max-width: 768px) {
+  .carousel-sm-2-items .embla__slide {
+    flex: 0 0 calc(50% - var(--gap));
+    min-width: calc(50% - var(--gap));
+  }
+  
+  .carousel-sm-3-items .embla__slide {
+    flex: 0 0 calc(33.333% - var(--gap));
+    min-width: calc(33.333% - var(--gap));
+  }
+  
+  .carousel-sm-4-items .embla__slide {
+    flex: 0 0 calc(25% - var(--gap));
+    min-width: calc(25% - var(--gap));
+  }
+  
+  /* Override desktop classes on mobile */
+  .carousel-2-items .embla__slide,
+  .carousel-3-items .embla__slide,
+  .carousel-4-items .embla__slide {
+    flex: 0 0 calc(100% - var(--gap));
+    min-width: calc(100% - var(--gap));
+  }
+  
+  /* Apply mobile classes when present */
+  .carousel-sm-2-items .embla__slide,
+  .carousel-sm-3-items .embla__slide,
+  .carousel-sm-4-items .embla__slide {
+    flex: 0 0 var(--mobile-flex, calc(100% - var(--gap)));
+    min-width: var(--mobile-min-width, calc(100% - var(--gap)));
+  }
+}

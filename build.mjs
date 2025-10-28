@@ -45,7 +45,7 @@ async function processCSS(cssText, filePath) {
 
 // Build configuration
 const buildOptions = {
-  entryPoints: ['src/js/main.js'],
+  entryPoints: ['src/js/main.js', 'src/js/carousel.js'],
   bundle: true,
   outdir: 'assets/js',
   minify: process.env.NODE_ENV === 'production',
@@ -125,7 +125,11 @@ async function build() {
       // Log build statistics in production
       if (!isDev && result.metafile) {
         console.log('📊 Build statistics:');
-        console.log(`Bundle size: ${(result.metafile.outputs['assets/js/main.js'].bytes / 1024).toFixed(2)}kb`);
+        Object.entries(result.metafile.outputs).forEach(([file, output]) => {
+          if (file.endsWith('.js')) {
+            console.log(`${file}: ${(output.bytes / 1024).toFixed(2)}kb`);
+          }
+        });
       }
       
       console.log('✨ Build complete');
